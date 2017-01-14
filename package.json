@@ -15,6 +15,10 @@
     "lint": "eslint index.js",
     "prepublish": "npm run clean && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yborunov/react-advanced-loader.git"
+  },
   "files": [
     "dist",
     "lib",
@@ -28,6 +32,9 @@
   ],
   "author": "George Borunov <george@borunov.com> (http://borunov.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yborunov/react-advanced-loader/issues"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
