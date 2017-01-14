@@ -12,7 +12,7 @@ export default ({
 
     const SpinnerComponent = Spinners[spinnerType]
 
-    return class LoadDecoratorHOC extends React.Component {
+    return class AdvancedLoaderHOC extends React.Component {
 
       componentDidMount() {
         if (!isReady(this.props)) {
