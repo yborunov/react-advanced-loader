@@ -73,7 +73,7 @@ export default AdvancedLoader({
 
 ## API
 
-### AdvancedLoader([prepare],[isReady],[refreshOnUpdate],[spinnerType],[spinnerOptions])(MyComponent)
+### AdvancedLoader([prepare],[isReady],[refreshOnUpdate],[SpinnerComponent])(MyComponent)
 
 **Parameters**
 
