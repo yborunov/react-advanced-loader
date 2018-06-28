@@ -1,18 +1,17 @@
 import React from 'react'
-import * as Spinners from 'better-react-spinkit'
 
 export default ({
   prepare = () => {},
   isReady = () => {},
   refreshOnUpdate = [],
-  spinnerType = 'ThreeBounce',
-  spinnerOptions = { size: 15 }
+  SpinnerComponent
 } = {}) => {
   return (LoadedComponent) => {
-
-    const SpinnerComponent = Spinners[spinnerType]
-
     return class AdvancedLoaderHOC extends React.Component {
+      constructor(props) {
+        super(props)
+        this.wrappedInstanceRef = React.createRef()
+      }
 
       componentDidMount() {
         if (!isReady(this.props)) {
@@ -24,30 +23,30 @@ export default ({
         if (!refreshOnUpdate.length) {
           return
         }
-        let prevVals = refreshOnUpdate.map(p => prevProps[p]).join('|')
-        let newVals = refreshOnUpdate.map(p => this.props[p]).join('|')
-        
+        const prevVals = refreshOnUpdate.map(p => prevProps[p]).join('|')
+        const newVals = refreshOnUpdate.map(p => this.props[p]).join('|')
+
         if (prevVals !== newVals) {
           prepare(this.props)
         }
       }
 
       /**
-       * Returns the underlying wrapped component instance.
-       * Useful if you need to access a method or property of the component
-       * passed to react-advanced-loader.
-       *
-       * @return {object} The rendered React component
-       **/
+        * Returns the underlying wrapped component instance.
+        * Useful if you need to access a method or property of the component
+        * passed to react-advanced-loader.
+        *
+        * @return {object} The rendered React component
+        */
       getWrappedInstance () {
-        return this.refs.wrappedInstance
+        return this.wrappedInstanceRef
       }
 
       render() {
         if (!isReady(this.props)) {
-          return <SpinnerComponent {...spinnerOptions} />
+          return <SpinnerComponent />
         }
-        return <LoadedComponent {...this.props} ref="wrappedInstance" />
+        return <LoadedComponent {...this.props} ref={this.wrappedInstanceRef} />
       }
     }
   }
