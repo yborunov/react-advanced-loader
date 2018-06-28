@@ -15,7 +15,7 @@ or as an [ES7 class decorator](https://github.com/wycats/javascript-decorators)
 ### Installing
 
 ```
-npm install react-advanced-loader--save-dev
+npm install react-advanced-loader --save
 ```
 
 ### Examples
