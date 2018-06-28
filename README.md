@@ -29,13 +29,14 @@ import MySpinnerComponent from './MySpinnerComponent'
 
 @AdvancedLoader({
   prepare: (props) => props.loadAPIData(),
-  isReady: (props) => props.isLoaded
+  isReady: (props) => props.isLoaded,
+  SpinnerComponent: MySpinnerComponent
 })
 export default class MyComponent extends React.Component {
   static propTypes = {
     loadAPIData: PropTypes.func.isRequired,
     isLoaded: PropTypes.bool.isRequired,
-    SpinnerComponent: MySpinnerComponet
+    SpinnerComponent: PropTypes.instanceOf(React.Component)
   }
 
   render() (
@@ -55,7 +56,7 @@ class MyComponent extends React.Component {
   static propTypes = {
     loadAPIData: PropTypes.func.isRequired,
     isLoaded: PropTypes.bool.isRequired,
-    SpinnerComponent: MySpinnerComponet
+    SpinnerComponent: PropTypes.instanceOf(React.Component)
   }
 
   render() (
@@ -65,7 +66,8 @@ class MyComponent extends React.Component {
 
 export default AdvancedLoader({
   prepare: (props) => props.loadAPIData(),
-  isReady: (props) => props.isLoaded
+  isReady: (props) => props.isLoaded,
+  SpinnerComponent: MySpinnerComponent
 })(MyComponent) // Enhanced component
 ```
 
